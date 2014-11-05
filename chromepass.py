@@ -13,4 +13,4 @@ for information in cursor.fetchall():
 	if password:
 		print 'website_link ' + information[0]
 		print 'Username: ' + information[1]
-		print 'Password: ' + password
+		print 'Password: ' + pass
