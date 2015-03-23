@@ -1,6 +1,9 @@
 from os import getenv
 import sqlite3
-import win32crypt
+try:
+    import win32crypt
+except:
+    pass
 import argparse
 
 
