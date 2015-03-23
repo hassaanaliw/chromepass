@@ -1,4 +1,4 @@
-from os import getenv
+import os
 import sqlite3
 try:
     import win32crypt
