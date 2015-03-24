@@ -57,7 +57,7 @@ def main():
             if (e == 'database is locked'):
                 print '[!] Make sure Google Chrome is not running in the background'
                 sys.exit(0)
-            elif (e == 'no such table: cookies'):
+            elif (e == 'no such table: logins'):
                 print '[!] Something wrong with the database name'
                 sys.exit(0)
             elif (e == 'unable to open database file'):
