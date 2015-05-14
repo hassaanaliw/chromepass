@@ -94,12 +94,10 @@ def getpath():
     return PathName            
 
 def csv(info):
-    csv_file = open('chromepass.csv', 'wb')
-    csv_file.write('origin_url,username,password \n'.encode('utf-8'))
-    for data in info:
-        csv_file.write(('%s, %s, %s \n' % (data['origin_url'], data['username'], data['password'])).encode('utf-8'))
-
-    csv_file.close()
+    with open('chromepass.csv', 'wb') as csv_file:
+        csv_file.write('origin_url,username,password \n'.encode('utf-8'))
+        for data in info:
+            csv_file.write(('%s, %s, %s \n' % (data['origin_url'], data['username'], data['password'])).encode('utf-8'))
     print("Data written to chromepass.csv")
 
 
