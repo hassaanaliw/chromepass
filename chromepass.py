@@ -23,8 +23,10 @@ def main():
     path = getpath()
     try:
         connection = sqlite3.connect(path + "Login Data")
-        cursor = connection.cursor()
-        v = cursor.execute('SELECT action_url, username_value, password_value FROM logins')
+        with connection:
+            cursor = connection.cursor()
+            v = cursor.execute('SELECT action_url, username_value, password_value FROM logins')
+            
         if (os.name == "posix") and (sys.platform == "darwin"):
                 print("Mac OSX not supported.")
                 sys.exit(0)
