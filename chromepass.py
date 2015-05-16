@@ -23,13 +23,15 @@ def main():
     path = getpath()
     try:
         connection = sqlite3.connect(path + "Login Data")
-        cursor = connection.cursor()
-        v = cursor.execute('SELECT action_url, username_value, password_value FROM logins')
+        with connection:
+            cursor = connection.cursor()
+            v = cursor.execute('SELECT action_url, username_value, password_value FROM logins')
+            value = v.fetchall()
+            
         if (os.name == "posix") and (sys.platform == "darwin"):
                 print("Mac OSX not supported.")
                 sys.exit(0)
 
-        value = v.fetchall()
         for information in value:
             if os.name == 'nt':
                 password = win32crypt.CryptUnprotectData(information[2], None, None, None, 0)[1]
