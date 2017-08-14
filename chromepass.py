@@ -117,28 +117,24 @@ def getpath():
 
 def output_csv(info):
     try:
-        with open('chromepass.csv', 'wb') as csv_file:
+        with open('chromepass-passwords.csv', 'wb') as csv_file:
             csv_file.write('origin_url,username,password \n'.encode('utf-8'))
             for data in info:
                 csv_file.write(('%s, %s, %s \n' % (data['origin_url'], data[
                     'username'], data['password'])).encode('utf-8'))
-        print("Data written to chromepass.csv")
+        print("Data written to chromepass-passwords.csv")
     except EnvironmentError:
         print('EnvironmentError: cannot write data')
 
 
 def output_json(info):
-    try:
-        csvfile = open('chromepass.csv', 'r')
-        jsonfile = open('chromepass.json', 'w')
-        fields = ("URL", "User", "Password")
-        reader = csv.DictReader(csvfile, fields)
-        out = json.dumps([row for row in reader])
-        jsonfile.write(out)
-        print("Data written to chromepass.json")
+	try:
+		with open('chromepass-passwords.json', 'w') as json_file:
+			json.dump({'password_items':info},json_file)
+			print("Data written to chromepass-passwords.json")
+	except EnvironmentError:
+		print('EnvironmentError: cannot write data')
 
-    except EnvironmentError:
-        print('EnvironmentError: cannot write data')
 
 
 if __name__ == '__main__':
