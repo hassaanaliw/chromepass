@@ -1,7 +1,7 @@
 chromepass
 ==========
 
-Get all passwords stored by Chrome on WINDOWS and Unix bases systems (except MAC OS).
+Get all passwords stored by Chrome on WINDOWS and Unix based systems (except MAC OS).
 
 # Information
 
@@ -23,7 +23,7 @@ To print output simply:
 To write to csv file:
 ``` python chromepass.py --o csv ```
 
-To write to csv file:
+To write to json file:
 ``` python chromepass.py --o json ```
 
 
