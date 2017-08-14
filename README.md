@@ -21,7 +21,11 @@ To print output simply:
 
 
 To write to csv file:
-``` python chromepass.py --o ```
+``` python chromepass.py --o csv ```
+
+To write to csv file:
+``` python chromepass.py --o json ```
+
 
 # Author
 
