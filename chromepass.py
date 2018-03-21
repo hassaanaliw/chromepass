@@ -95,12 +95,11 @@ def getpath():
         else:
             # This is the Linux Path
             PathName += '/.config/google-chrome/Default/'
-    try:
-        assert os.path.isdir(PathName)
-        return PathName
-    except AssertionError:
+    if not os.path.isdir(PathName):
         print('[!] Chrome Doesn\'t exists')
         sys.exit(0)
+
+    return PathName
 
 
 def output_csv(info):
